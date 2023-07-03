@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiAppProba.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiAppProba">
+
+    <Shell.FlyoutHeader>
+        <Grid>
+            <Image Source="biblioteka.jpg" HeightRequest="300"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <ShellContent
+        Title="TsanGenius"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <ShellContent
+        Title="Books"
+        ContentTemplate="{DataTemplate local:BooksPage}"
+        Route="BooksPage" />
+    <ShellContent
+        Title="Films"
+        ContentTemplate="{DataTemplate local:FilmsPage}"
+        Route="FilmsPage" />
+</Shell>

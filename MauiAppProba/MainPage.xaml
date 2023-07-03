@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppProba.MainPage">
+    <VerticalStackLayout Margin="30, 60, 30, 30" Spacing="50">
+        <Label Text="Hello my Friend, this app need for add books, films and anime" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Center"/>
+        <Button Text="Books" BackgroundColor="Purple" FontSize="Header" HorizontalOptions="Center" Clicked="OnBooksClicked" FontAttributes="Bold"/>
+        <Button Text="Films" BackgroundColor="Purple" FontSize="Header" HorizontalOptions="Center" Clicked="OnFilmsClicked" FontAttributes="Bold"/>
+        <Button Text="Anime" BackgroundColor="Purple" FontSize="Header" HorizontalOptions="Center" Clicked="OnAnimeClicked" FontAttributes="Bold"/>
+    </VerticalStackLayout>
+</ContentPage>

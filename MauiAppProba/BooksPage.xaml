@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiAppProba"
+             x:Class="MauiAppProba.BooksPage">
+    <Shell.SearchHandler>
+        <controls:BookSearchHandler Placeholder="Enter search term"
+                                      ShowsResults="true">
+            <controls:BookSearchHandler.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10"
+                          ColumnDefinitions="50,*">
+                        <Label Grid.Column="1"
+                               Text="{Binding Title}"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </controls:BookSearchHandler.ItemTemplate>
+        </controls:BookSearchHandler>
+    </Shell.SearchHandler>
+    <Grid ColumnDefinitions="20, 900, *" RowDefinitions="60, *">
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" x:Name="refreshView"  VerticalOptions="Start" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"
+                     Command="{Binding LoadDataCommand}">
+            <CollectionView  Margin="30,20,30,30"
+                             ItemsSource="{Binding Books}"                             
+                             SelectedItem="{Binding SelectedBook, Mode=TwoWay}"
+                             SelectionChangedCommand="{Binding BookSelectedCommand}"
+                             SelectionMode="Single"
+                             RemainingItemsThreshold="0" 
+                             RemainingItemsThresholdReachedCommand="{Binding LoadTwoData}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="100, 20, *" ColumnDefinitions="200, *" Padding="15,10" Margin="10,5,0,5">
+                                <Grid ColumnDefinitions="0.6*, 0.3*, 0.5*, 0.5*" Grid.Row="0" Grid.Column="1">
+                                    <Label Text="{Binding Title, StringFormat='{0}'}"  MaxLines="1" LineBreakMode="TailTruncation" FontSize="Title" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="0" Margin="48, 10, 10, 10"/>
+                                    <Label Text="{Binding PublishedDate, StringFormat='{0} year'}" FontSize="Small" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="10"/>
+                                <Label Text="{Binding Categories, StringFormat='Genre:    {0}'}" FontSize="Small" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="0, 0, 0, 0"/>
+                            </Grid>
+                                <Grid Grid.Row="2" ColumnDefinitions="*" Grid.Column="1">
+                                    <Label Text="{Binding Description}" HorizontalOptions="Start" Margin="50, -30, 0, 0" FontSize="Default" Grid.Column="0" MaxLines="3" LineBreakMode="TailTruncation"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+           
+        </RefreshView>
+    </Grid>
+</ContentPage>

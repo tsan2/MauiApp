@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppProba.AddFilmPage"
+             Title="Edit Film">
+    <VerticalStackLayout Margin="30, 10, 30, 30">
+        <Label Text="Register book" FontSize="Header" VerticalOptions="Start" HorizontalOptions="Center" FontAttributes="Bold"/>
+        <Grid ColumnDefinitions="150, 1.5*, 0.5*, *" RowDefinitions="80, 120, 80, 80, 80, 80">
+            <Label Text="Title" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Row="0"/>
+            <Entry x:Name="EntryTitle" Grid.ColumnSpan ="3" Text="{Binding Title}" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" Grid.Row="0" BackgroundColor="LightGray"/>
+            <Label Text="Description" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Start" Grid.Row="1"/>
+            <Editor x:Name="EditorDescription" Grid.ColumnSpan ="3" Text="{Binding Description}" Grid.Column="1" HeightRequest="110" Grid.Row="1" BackgroundColor="LightGray"/>
+            <Label Text="Authors" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Row="2"/>
+            <Entry x:Name="EntryAuthors" Grid.ColumnSpan ="3" Text="{Binding Authors}" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" Grid.Row="2" BackgroundColor="LightGray"/>
+            <Label Text="Relesed year" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Row="3"/>
+            <Entry x:Name="EntryRelesed" Grid.ColumnSpan ="3" Text="{Binding Relesed_year}" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" Grid.Row="3" BackgroundColor="LightGray"/>
+            <Label Text="Genre" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Row="4"/>
+            <Picker x:Name="pickerGenre" Grid.Column="1" Grid.Row="4" VerticalOptions="Center" FontSize="Medium" BackgroundColor="LightGray" SelectedItem="{Binding Genre}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Fantasy</x:String>
+                        <x:String>Science Fiction</x:String>
+                        <x:String>Dystopian</x:String>
+                        <x:String>Action and Adventure</x:String>
+                        <x:String>Mystery</x:String>
+                        <x:String>Horror</x:String>
+                        <x:String>Thriller and Suspense</x:String>
+                        <x:String>Historical Fiction</x:String>
+                        <x:String>Romance</x:String>
+                        <x:String>Contemporary Fiction</x:String>
+                        <x:String>Literary Fiction</x:String>
+                        <x:String>Magical Realism</x:String>
+                        <x:String>Graphic Novel</x:String>
+                        <x:String>Short Story</x:String>
+                        <x:String>Young Adult</x:String>
+                        <x:String>New Adult</x:String>
+                        <x:String>Children’s</x:String>
+                        <x:String>Memoir and Autobiography</x:String>
+                        <x:String>Biography</x:String>
+                        <x:String>Food and Drink</x:String>
+                        <x:String>Art and Photography</x:String>
+                        <x:String>Self-help</x:String>
+                        <x:String>History</x:String>
+                        <x:String>Travel</x:String>
+                        <x:String>True Crime</x:String>
+                        <x:String>Humor</x:String>
+                        <x:String>Essays</x:String>
+                        <x:String>Guide / How-to</x:String>
+                        <x:String>Religion and Spirituality</x:String>
+                        <x:String>Humanities and Social Sciences</x:String>
+                        <x:String>Parenting and Families</x:String>
+                        <x:String>Science and Technology</x:String>
+                        <x:String>Other</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label Text="State" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" Grid.Row="5"/>
+            <Picker x:Name="pickerState" Grid.Column="1" Grid.Row="5" VerticalOptions="Center" FontSize="Medium" BackgroundColor="LightGray" SelectedItem="{Binding State}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>В планах</x:String>
+                        <x:String>Смотрю</x:String>
+                        <x:String>Просмотрено</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Button x:Name="IconButton" Text="Add Icon" Grid.Column="1" Grid.Row="4" BackgroundColor="Gray" HorizontalOptions="End" VerticalOptions="Center"  FontSize="Body" Clicked="OnClickedIconButton"/>
+            <Entry Placeholder="{Binding Icon_file}" Text="{Binding Path_file}" x:Name="PathEntry" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" VerticalOptions="Center" BackgroundColor="LightGray" FontSize="Medium" IsReadOnly="True"/>
+        </Grid>
+        <Grid ColumnDefinitions="*, 20, *, 20, *" RowDefinitions="*">
+            <Button x:Name="CancelButton" Text="Cancel" Grid.Column="2" BackgroundColor="MediumTurquoise" FontSize="Medium" Command="{Binding DoneEditingCommand}"/>
+            <Button x:Name="SaveButton" Text="Save" Grid.Column="4" BackgroundColor="MediumTurquoise" FontSize="Medium" Command="{Binding SaveCommand}"/>
+            <Button x:Name="DeleteButton" Text="Delete" Grid.Column="0" BackgroundColor="MediumTurquoise" FontSize="Medium" Command="{Binding DeleteCommand}" IsEnabled="False"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
